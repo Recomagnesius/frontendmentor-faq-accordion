@@ -14,6 +14,13 @@
     .attribution a { color: hsl(228, 45%, 44%); }
 
     /* base styles */
+
+    :root{
+      --primary-color: hsl(292, 42%, 14%); /*dark pink */
+      --secondary-color: #AD28EB;/* bright pink*/
+      --background-color: #F9EEFF;
+      --text-color: hsl(292, 16%, 49%);
+    }
     
     @font-face {
     font-family: 'WorkSans';
@@ -54,7 +61,7 @@
       background-image: url('./assets/images/background-pattern-desktop.svg');
       background-repeat: no-repeat;
       background-size: 100%;
-      background-color: #F9EEFF;
+      background-color: var(--background-color);
       width: 100%;
       display: flex;
       align-items: center;
@@ -64,21 +71,24 @@
     .faq{
       background-color: white;
       border-radius: 2rem;
-      padding: 1rem 2rem;
+      padding: 2rem 2rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      width: 35rem;
+      max-width: 35rem;
+   
     }
 
     .faq__top{
       display: flex;
       flex-direction: row;
       align-items: center;
+      margin-bottom: 2rem;
     }
     .faq__star-icon{
       width: 2rem;
       height: 2rem;
+      margin-right: 1rem;
     }
     .faq__title{
       font-size: 3rem;
@@ -95,17 +105,45 @@
       cursor: pointer;
     }
 
-    .faq__list-item{
-      padding: 1rem 0re;
+    .list-item__header{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .6rem;
     }
+
     .faq__list-item__title{
       font-weight: bold;
     }
+    .faq__list-item__title:hover{
+      color: var(--secondary-color);
+      cursor: pointer;
+    }
+    /* .faq__list-item{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    } */
+
     .faq__list-item__text{
-        
+      color: var(--text-color);
+    }
+    
+    .faq__list-item:not(:last-child)>.faq__list-item__text{
+        margin-bottom: 2rem;
     }
     .hide{
-      display: none;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: opacity .4s ease, max-height .8s ease;
+    }
+    .show{
+      max-height: 500px;
+      opacity: 100;
+      overflow: hidden;
+      transition: opacity .6s ease, max-height 2s ease;
     }
   </style>
 </head>
@@ -120,42 +158,42 @@
         </div>
         <div class="faq__bottom">
           <ul class="faq__list" role="list">
-            <li class="fac__list-item" role="listitem">
-              <div class="list-item__header"> <h4 class="fac__list-item__title">What is Frontend Mentor, and how will it help me?</h4>
+            <li class="faq__list-item" role="listitem">
+              <div class="list-item__header"> <h4 class="faq__list-item__title">What is Frontend Mentor, and how will it help me?</h4>
                 <button class="faq-toggle"><img src="./assets/images/icon-plus.svg" alt="" class="faq-icon"></button></div>
              
-              <p class="fac__list-item__text hide">Frontend Mentor offers realistic coding challenges to help developers improve their 
+              <p class="faq__list-item__text hide">Frontend Mentor offers realistic coding challenges to help developers improve their 
                 frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for 
                 all levels and ideal for portfolio building.</p>
               
               
             </li>
-            <li class="fac__list-item"role="listitem">
+            <li class="faq__list-item"role="listitem">
               <div class="list-item__header">
-                <h4 class="fac__list-item__title">Is Frontend Mentor free?</h4>
+                <h4 class="faq__list-item__title">Is Frontend Mentor free?</h4>
                 <button class="faq-toggle"><img src="./assets/images/icon-plus.svg" alt="" class="faq-icon"></button>
               </div>
               
-              <p class="fac__list-item__text hide">Yes, Frontend Mentor offers both free and premium coding challenges, with the free 
+              <p class="faq__list-item__text hide">Yes, Frontend Mentor offers both free and premium coding challenges, with the free 
                 option providing access to a range of projects suitable for all skill levels.</p>
                 
               </li>
-            <li class="fac__list-item"role="listitem">
+            <li class="faq__list-item"role="listitem">
               <div class="list-item__header">
-                <h4 class="fac__list-item__title">Can I use Frontend Mentor projects in my portfolio?</h4>
+                <h4 class="faq__list-item__title">Can I use Frontend Mentor projects in my portfolio?</h4>
                 <button class="faq-toggle"><img src="./assets/images/icon-plus.svg" alt="" class="faq-icon"></button>
               </div>
               
-              <p class="fac__list-item__text hide">Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
+              <p class="faq__list-item__text hide">Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
                 way to showcase your skills to potential employers!</p>
                 
               </li>
-            <li class="fac__list-item"role="listitem">
+            <li class="faq__list-item"role="listitem">
               <div class="list-item__header">
-                <h4 class="fac__list-item__title">How can I get help if I'm stuck on a Frontend Mentor challenge?</h4>
+                <h4 class="faq__list-item__title">How can I get help if I'm stuck on a challenge?</h4>
                 <button class="faq-toggle"><img src="./assets/images/icon-plus.svg" alt="" class="faq-icon"></button>
               </div>
-              <p class="fac__list-item__text hide">The best place to get help is inside Frontend Mentor's Discord community. There's a help 
+              <p class="faq__list-item__text hide">The best place to get help is inside Frontend Mentor's Discord community. There's a help 
                 channel where you can ask questions and seek support from other community members.</p>
                 
               </li>
